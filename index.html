@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Web Buyer</title>
+
+<style>
+body{
+margin:0;
+background:black;
+color:#00ff00;
+font-family:monospace;
+text-align:center;
+overflow:hidden;
+}
+
+canvas{
+position:fixed;
+inset:0;
+z-index:-10;
+pointer-events:none;
+}
+
+button{
+padding:12px 25px;
+margin:8px;
+background:black;
+border:1px solid #00ff00;
+color:#00ff00;
+font-weight:bold;
+border-radius:10px;
+}
+
+button:hover{
+box-shadow:0 0 15px #00ff00;
+transform:scale(1.05);
+}
+
+h1{
+font-size:40px;
+text-shadow:0 0 10px lime;
+}
+
+.card{
+margin-top:80px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>web buyer 1</h1>
+<p>🔥 Jasa Website Simple / Bio Link</p>
+<p>✅ Cocok buat jualan / personal branding</p>
+<p>💰 Mulai 50K (jadi cepat)</p>
+<p>📱 Bisa order langsung dari HP</p>
+  <p>🛠 Gratis revisi 1x</p>
+<p>📦 File dikirim setelah jadi</p>
+<p>⚡ Respon cepat via WhatsApp</p>
+
+<a href="https://wa.me/6285891786542?text=Halo%20Afa,%20saya%20mau%20order%20website.%20Boleh%20lihat%20contohnya?" target="_blank">
+<button>ORDER VIA WHATSAPP</button>
+</a>
+
+<br><br>
+
+<a href="https://www.instagram.com/afa_ciwoo/" target="_blank">
+<button>Instagram</button>
+</a>
+
+<a href="https://m.facebook.com/afa.fingerstyle.3" target="_blank">
+<button>Facebook</button>
+</a>
+
+</div>
+
+<canvas id="matrix"></canvas>
+
+<script>
+const c=document.getElementById("matrix");
+const ctx=c.getContext("2d");
+c.width=window.innerWidth;
+c.height=window.innerHeight;
+let chars="01AFAHACKER";
+chars=chars.split("");
+let font=14;
+let cols=c.width/font;
+let drops=[];
+for(let x=0;x<cols;x++)drops[x]=1;
+
+function draw(){
+ctx.fillStyle="rgba(0,0,0,.05)";
+ctx.fillRect(0,0,c.width,c.height);
+ctx.fillStyle="#0F0";
+ctx.font=font+"px monospace";
+for(let i=0;i<drops.length;i++){
+let text=chars[Math.floor(Math.random()*chars.length)];
+ctx.fillText(text,i*font,drops[i]*font);
+if(drops[i]*font>c.height&&Math.random()>0.975)drops[i]=0;
+drops[i]++;
+}
+}
+setInterval(draw,33);
+</script>
+
+</body>
+</html>
